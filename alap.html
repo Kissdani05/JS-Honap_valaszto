@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hónap kiválasztása</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+        input {
+            width: 100%;
+            padding: 5px;
+        }
+    </style>
+    <script>
+        function createTable() {
+            const month = document.getElementById("months").value;
+            const daysInMonth = {
+                'Január': 31,
+                'Február': 28,
+                'Március': 31,
+                'Április': 30,
+                'Május': 31,
+                'Június': 30,
+                'Július': 31,
+                'Augusztus': 31,
+                'Szeptember': 30,
+                'Október': 31,
+                'November': 30,
+                'December': 31
+            };
+
+            const days = daysInMonth[month];
+            let table = "<table><tr><th>Nap</th><th>Beviteli mező</th></tr>";
+            for (let i = 1; i <= days; i++) {
+                table += "<tr><td>" + i + "</td><td><input type='text' name='day" + i + "' /></td></tr>";
+            }
+            table += "</table>";
+            document.getElementById("tableContainer").innerHTML = table;
+        }
+    </script>
+</head>
+<body>
+
+    <h2>Válassz egy hónapot</h2>
+
+    <select id="months" onchange="createTable()">
+        <option value="Január">Január</option>
+        <option value="Február">Február</option>
+        <option value="Március">Március</option>
+        <option value="Április">Április</option>
+        <option value="Május">Május</option>
+        <option value="Június">Június</option>
+        <option value="Július">Július</option>
+        <option value="Augusztus">Augusztus</option>
+        <option value="Szeptember">Szeptember</option>
+        <option value="Október">Október</option>
+        <option value="November">November</option>
+        <option value="December">December</option>
+    </select>
+
+    <div id="tableContainer"></div>
+
+</body>
+</html>
